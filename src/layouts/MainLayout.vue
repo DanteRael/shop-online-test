@@ -1,21 +1,28 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
-        />
+  <q-layout view="hHh lpR fFf">
+    <q-header elevated class="bg-navbar text-navbar">
+      <q-bar class="bg-searchbar text-searchbar" style="height: 80px; width: 100%;">
+      <q-btn flat icon="home" aria-label="Logo" />
+      <q-input
+    model-value=""
+    outlined
+    square
+    placeholder="Buscar produtos"
+    class="q-ml-md q-mr-md bg-search text-search"
+    style="flex: 1;"
+  >
+    <template #append>
+      <q-btn flat icon="search" />
+    </template>
+  </q-input>
+      <q-btn flat icon="account_circle" label="Login" class="q-mr-sm" />
+      <q-btn flat icon="shopping_cart" label="Carrinho" />
+    </q-bar>
 
+      <q-toolbar>
         <q-toolbar-title>
           Quasar App
         </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
 
@@ -96,7 +103,27 @@ const linksList: EssentialLinkProps[] = [
 
 const leftDrawerOpen = ref(false);
 
-function toggleLeftDrawer () {
-  leftDrawerOpen.value = !leftDrawerOpen.value;
-}
 </script>
+
+<style>
+.bg-searchbar {
+  background-color: #131921 !important;
+}
+.text-searchbar {
+  color: #FFFFFF !important;
+}
+
+.bg-navbar {
+  background-color: #232F3E !important; 
+}
+.text-navbar {
+  color: #FFFFFF !important;
+}
+
+.bg-search {
+  background-color: #FFFFFF !important; 
+}
+.text-search {
+  color: #000000 !important;
+}
+</style>

@@ -2,9 +2,29 @@ import type { RouteRecordRaw } from 'vue-router';
 
 const routes: RouteRecordRaw[] = [
   {
+    path: '/login',
+    component: () => import('layouts/LoginLayout.vue'),
+    children: [{ path: '', component: () => import('pages/LoginPage.vue') }],
+  },
+  {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [{ path: '', component: () => import('pages/IndexPage.vue') }],
+  },
+  {
+    path: '/adm',
+    component: () => import('layouts/MainLayoutAdm.vue'),
+    children: [{ path: '', component: () => import('pages/IndexPage.vue') }],
+  },
+  {
+    path: '/products',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/IndexPage.vue') },
+      { path: 'products/create', component: () => import('pages/CreateProducts.vue') },
+      // { path: 'products/update/:id?', component: () => import('pages/ProductUpdatePage.vue') },
+      // { path: 'products/delete', component: () => import('pages/ProductDeletePage.vue') }
+    ]
   },
 
   // Always leave this as last one,
