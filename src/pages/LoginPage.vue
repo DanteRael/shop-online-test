@@ -51,6 +51,8 @@
         </q-form>
       </q-card-section>
 
+      <q-card-section class="text-center q-pt-none">
+      </q-card-section>
     </q-card>
   </q-page>
 </template>
