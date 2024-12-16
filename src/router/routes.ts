@@ -17,13 +17,13 @@ const routes: RouteRecordRaw[] = [
     children: [{ path: '', component: () => import('pages/IndexPage.vue') }],
   },
   {
-    path: '/products',
+    path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/IndexPage.vue') },
       { path: 'products/create', component: () => import('pages/CreateProducts.vue') },
-      // { path: 'products/update/:id?', component: () => import('pages/ProductUpdatePage.vue') },
-      // { path: 'products/delete', component: () => import('pages/ProductDeletePage.vue') }
+      { path: 'products/update/:id?', component: () => import('pages/UpdateProducts.vue') },
+      { path: 'products/delete', component: () => import('pages/DeleteProducts.vue') }
     ]
   },
 

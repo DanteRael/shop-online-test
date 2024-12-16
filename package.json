@@ -12,7 +12,8 @@
     "test": "echo \"No test specified\" && exit 0",
     "dev": "quasar dev",
     "build": "quasar build",
-    "postinstall": "quasar prepare"
+    "postinstall": "quasar prepare",
+    "lint:fix": "eslint --ext .js,.vue,.ts src --fix"
   },
   "dependencies": {
     "@quasar/extras": "^1.16.4",
