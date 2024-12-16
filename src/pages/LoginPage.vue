@@ -58,24 +58,24 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { reactive } from 'vue';
 import { useAuthStore } from '../stores/AuthStore'
+import { notify } from 'src/utils/notify-utils';
+import { useRoute, useRouter } from 'vue-router';
 
-const form = ref({
-  user: '',
-  password: ''
-})
+const form = reactive({ user: '', password: ''})
 
 const auth = useAuthStore()
+const router = useRouter()
+const route = useRoute()
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 const login = async () => {
-  await auth.login(form.value.user, form.value.password)
-
-  console.log("Recebido")
-  console.log(form)
-
-  return {
-    login,
+  try {
+    await auth.login(form.user, form.password)
+    await router.push(route.query.redirect?.toString() ?? '/')
+  } catch (e: any) {
+    notify.error(e.response?.data?.message)
   }
 }
 </script>
