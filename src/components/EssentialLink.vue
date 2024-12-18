@@ -1,17 +1,13 @@
 <template>
   <q-item
     clickable
-    tag="a"
-    target="_blank"
-    :href="link"
+    tag="div"
+    @click="navigate"
   >
-    <q-item-section
-      v-if="icon"
-      avatar
-    >
+    <q-item-section v-if="icon" avatar>
       <q-icon :name="icon" />
     </q-item-section>
-
+    
     <q-item-section>
       <q-item-label>{{ title }}</q-item-label>
       <q-item-label caption>{{ caption }}</q-item-label>
@@ -20,16 +16,31 @@
 </template>
 
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export interface EssentialLinkProps {
   title: string;
   caption?: string;
-  link?: string;
+  link?: string | { name: string; [key: string]: any };
   icon?: string;
-};
+}
 
-withDefaults(defineProps<EssentialLinkProps>(), {
+const props = withDefaults(defineProps<EssentialLinkProps>(), {
   caption: '',
-  link: '#',
+  link: '',
   icon: '',
-});
+})
+
+const router = useRouter()
+
+function navigate() {
+  if (props.link) {
+    if (typeof props.link === 'string') {
+      window.open(props.link, '_blank')
+    } else {
+      router.push(props.link)
+    }
+  }
+}
 </script>

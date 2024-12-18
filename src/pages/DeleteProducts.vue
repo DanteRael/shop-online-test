@@ -15,7 +15,7 @@
             />
             
             <q-card-actions align="right">
-              <q-btn label="Cancelar" color="negative" to="/products" />
+              <q-btn label="Cancelar" color="negative" @click="goToAdmHome" />
               <q-btn 
                 label="Excluir Produto" 
                 type="submit" 
@@ -33,6 +33,10 @@
   import { useQuasar } from 'quasar'
   import { useRouter } from 'vue-router'
   import axios from 'axios'
+
+  const goToAdmHome = () => {
+  router.push({ name: 'adm-home' })
+}
   
   /* eslint-disable @typescript-eslint/no-unused-vars */
   

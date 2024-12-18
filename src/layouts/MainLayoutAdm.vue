@@ -15,7 +15,15 @@
         <q-btn flat icon="search" />
       </template>
     </q-input>
-        <q-btn flat icon="account_circle" label="Login" class="q-mr-sm" />
+  
+        <q-btn
+          flat
+          icon="account_circle"
+          :label="isAuthenticated ? 'Logout' : 'Login'"
+          class="q-mr-sm"
+          @click="handleAuthClick"
+        />
+
         <q-btn flat icon="shopping_cart" label="Carrinho" />
       </q-bar>
   
@@ -63,31 +71,58 @@
   
   <script setup lang="ts">
   import { ref } from 'vue';
+  import { useRouter } from 'vue-router';
   import EssentialLink, { type EssentialLinkProps } from 'components/EssentialLink.vue';
+
+  const router = useRouter();
+  const isAuthenticated = ref<boolean>(false);
   
   const linksList: EssentialLinkProps[] = [
-    {
-      title: 'Criar um novo produto',
-      icon: 'add_circle',
-      link: 'https://quasar.dev'
-    },
-    {
-      title: 'Atualizar um produto existente',
-      icon: 'edit',
-      link: 'https://github.com/quasarframework'
-    },
-    {
-      title: 'Remover um produto',
-      icon: 'delete',
-      link: 'https://chat.quasar.dev'
-    },
-  ];
+  {
+    title: 'Criar um novo produto',
+    icon: 'add_circle',
+    link: { name: 'create-products' },
+  },
+  {
+    title: 'Atualizar um produto existente',
+    icon: 'edit',
+    link: { name: 'update-products' },
+  },
+  {
+    title: 'Remover um produto',
+    icon: 'delete',
+    link: { name: 'delete-products' },
+  },
+]
+
+
   
   const leftDrawerOpen = ref(false);
   
   function toggleLeftDrawer () {
     leftDrawerOpen.value = !leftDrawerOpen.value;
   }
+
+function handleAuthClick() {
+  if (isAuthenticated.value) {
+    logout();
+  } else {
+    router.push('/login');
+  }
+}
+
+function logout() {
+  console.log('Logging out...');
+  isAuthenticated.value = false;
+
+  router.push('/login');
+}
+
+function simulateLogin() {
+  isAuthenticated.value = true;
+}
+
+simulateLogin();
   </script>
   
   <style>

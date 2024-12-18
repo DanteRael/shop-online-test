@@ -37,7 +37,7 @@
             />
             
             <q-card-actions align="right">
-              <q-btn label="Cancelar" color="negative" to="/products" />
+              <q-btn label="Cancelar" color="negative" @click="goToAdmHome" />
               <q-btn label="Criar Produto" type="submit" color="primary" />
             </q-card-actions>
           </q-form>
@@ -51,6 +51,10 @@
   import { useQuasar } from 'quasar'
   import { useRouter } from 'vue-router'
   import axios from 'axios'
+
+  const goToAdmHome = () => {
+  router.push({ name: 'adm-home' })
+}
   
   // Disable eslint for unused vars in this specific case
   /* eslint-disable @typescript-eslint/no-unused-vars */
