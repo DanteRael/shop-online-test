@@ -1,40 +1,7 @@
-# Quasar App (shop-online-test)
-
-A Quasar Project
-
-## Install the dependencies
-```bash
-yarn
-# or
-npm install
-```
-
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
-```bash
-quasar dev
-```
-
-
-### Lint the files
-```bash
-yarn lint
-# or
-npm run lint
-```
-
-
-### Format the files
-```bash
-yarn format
-# or
-npm run format
-```
-
-
-### Build the app for production
-```bash
-quasar build
-```
-
-### Customize the configuration
-See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
+Como utilizar a shop-online: 
+1°) faça pull request e instale o código no seu vsCode (ou qualquer app que utilizares)
+2°) comando para iniciar: quasar dev
+3°) Login: O login possue 2 usuários: user: (nome: user, senha: user) e admin (nome: admin; senha: admin)
+4°) o Admin tem a capacidade de adicionar, dar update, ou deletar produtos do banco de dados
+5°) o user pode apenas procurar por produtos
+6°) funcionalidades não prontas: carrinho, crud.
